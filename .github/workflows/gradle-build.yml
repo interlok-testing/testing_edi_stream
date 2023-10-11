@@ -20,3 +20,4 @@ jobs:
     secrets:
       NEXUS_REPO_PASSWORD: ${{ secrets.NEXUS_REPO_PASSWORD }}
       TEAMS_IDN_WH_URL: ${{ secrets.TEAMS_IDN_WH_URL }}
+      INTERLOK_LICENSE_KEY: ${{ secrets.INTERLOK_LICENSE_KEY }}
