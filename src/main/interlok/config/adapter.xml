@@ -67,7 +67,6 @@
             </filename-creator>
             <base-directory-url>./edi-out</base-directory-url>
           </producer>
-          <produce-exception-handler class="null-produce-exception-handler"/>
           <unique-id>nostalgic-murdock</unique-id>
           <message-metrics-interceptor>
             <unique-id>nostalgic-murdock-MessageMetrics</unique-id>
@@ -118,7 +117,6 @@
             </filename-creator>
             <base-directory-url>./xml-out</base-directory-url>
           </producer>
-          <produce-exception-handler class="null-produce-exception-handler"/>
           <unique-id>nostalgic-murdock 2</unique-id>
           <message-metrics-interceptor>
             <unique-id>nostalgic-murdock-MessageMetrics</unique-id>

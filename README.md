@@ -1,5 +1,8 @@
 # EDI Testing
 
+[![license](https://img.shields.io/github/license/interlok-testing/testing_edi_stream.svg)](https://github.com/interlok-testing/testing_edi_stream/blob/develop/LICENSE)
+[![Actions Status](https://github.com/interlok-testing/testing_edi_stream/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/interlok-testing/testing_edi_stream/actions/workflows/gradle-build.yml)
+
 Project tests interlok-edi-stream features
 
 ## What it does
