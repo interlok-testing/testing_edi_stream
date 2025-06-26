@@ -1,25 +1,39 @@
+import xyz.ronella.gradle.plugin.simple.git.task.*
+
 plugins {
   // https://github.com/nemerosa/versioning
-  id 'net.nemerosa.versioning' version '2.14.0'
+  id 'net.nemerosa.versioning' version '3.1.0'
+  id "xyz.ronella.simple-git" version "2.0.3"
 }
 
 ext {
-  interlokParentGradle = "https://raw.githubusercontent.com/adaptris/interlok-build-parent/main/v5/build.gradle"
-  interlokVersion = '5.0-SNAPSHOT'
-  // We don't need the WAR file..
+  testingCommonGradle = "https://raw.githubusercontent.com/interlok-testing/testing_common/refs/heads/master/common.gradle"
+//  testingCommonGradle = "../testing_common/common.gradle"
+  testingLicensedGradle = "https://raw.githubusercontent.com/interlok-testing/testing_common/refs/heads/master/licensed.gradle"
+//  testingLicensedGradle = "../testing_common/licensed.gradle"
+  interlokTestingVersion = "0.1"
+  restAssuredVersion = "5.5.0"
   includeWar='true'
 }
 
 allprojects {
-  apply from: "${interlokParentGradle}"
+  apply from: "${testingCommonGradle}"
+  apply from: "${testingLicensedGradle}"
   // specify the version of the configuration.
   version=versioning.info.full
 }
 
+def cloneLicenseGeneratorRepo = tasks.register("cloneLicenseGeneratorRepo", GitClone) {
+  def cloneDir = new File(interlokLicenseGeneratorCloneDir)
+  if (!cloneDir.exists()) {
+    repository = interlokLicenseGeneratorRepo
+    directory = cloneDir
+  } else it.enabled = false
+}
 
 dependencies {
   interlokRuntime ("com.adaptris:interlok-edi-stream:$interlokVersion") { changing=true }
   
   interlokJavadocs group: "com.adaptris", name: "interlok-edi-stream", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
-
+  testImplementation group: "com.adaptris", name: "interlok-testing-common", version: "$interlokTestingVersion"
 }
