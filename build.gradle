@@ -23,13 +23,7 @@ allprojects {
   version=versioning.info.full
 }
 
-def cloneLicenseGeneratorRepo = tasks.register("cloneLicenseGeneratorRepo", GitClone) {
-  def cloneDir = new File(interlokLicenseGeneratorCloneDir)
-  if (!cloneDir.exists()) {
-    repository = interlokLicenseGeneratorRepo
-    directory = cloneDir
-  } else it.enabled = false
-}
+def cloneLicenseGeneratorRepo = tasks.register("cloneLicenseGeneratorRepo", GitClone, project.property('cloneLicenseGeneratorClosure'))
 
 dependencies {
   interlokRuntime ("com.adaptris:interlok-edi-stream:$interlokVersion") { changing=true }
