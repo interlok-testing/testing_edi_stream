@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.UUID;
 
-public class DefaultFunctionalTest extends LicensedSingleAdapterFunctionalTest {
+public class DefaultFunctionalTest extends SingleAdapterFunctionalTest {
     private static final String XML_PAYLOAD_RESOURCE = "xml_edi_invoice.xml";
     private static final String EDI_PAYLOAD_RESOURCE = "edi_invoice_88591.edi";
 

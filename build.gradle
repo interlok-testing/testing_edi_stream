@@ -1,9 +1,6 @@
-import xyz.ronella.gradle.plugin.simple.git.task.*
-
 plugins {
   // https://github.com/nemerosa/versioning
   id 'net.nemerosa.versioning' version '3.1.0'
-  id "xyz.ronella.simple-git" version "2.0.3"
 }
 
 ext {
@@ -11,7 +8,6 @@ ext {
 //  testingCommonGradle = "../testing_common/common.gradle"
   testingLicensedGradle = "https://raw.githubusercontent.com/interlok-testing/testing_common/refs/heads/master/licensed.gradle?timestamp=${new Date().getTime()}"
 //  testingLicensedGradle = "../testing_common/licensed.gradle"
-  interlokTestingVersion = "0.1"
   restAssuredVersion = "5.5.0"
   includeWar='true'
 }
@@ -23,11 +19,8 @@ allprojects {
   version=versioning.info.full
 }
 
-def cloneLicenseGeneratorRepo = tasks.register("cloneLicenseGeneratorRepo", GitClone, project.property('cloneLicenseGeneratorClosure'))
-
 dependencies {
   interlokRuntime ("com.adaptris:interlok-edi-stream:$interlokVersion") { changing=true }
   
   interlokJavadocs group: "com.adaptris", name: "interlok-edi-stream", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
-  testImplementation group: "com.adaptris", name: "interlok-testing-common", version: "$interlokTestingVersion"
 }
